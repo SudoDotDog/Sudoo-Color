@@ -1,0 +1,44 @@
+{
+  "name": "@sudoo/color",
+  "version": "1.0.0",
+  "description": ":deciduous_tree: Color Controller",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SudoDotDog/Sudoo-Color.git"
+  },
+  "keywords": [
+    "Sudoo"
+  ],
+  "author": "WMXPY",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SudoDotDog/Sudoo-Color/issues"
+  },
+  "homepage": "https://github.com/SudoDotDog/Sudoo-Color#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@sudoo/io": "^1.7.0",
+    "@sudoo/triforce": "^2.2.1"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "instrument": true,
+    "reporter": [
+      "json",
+      "text-summary"
+    ],
+    "report-dir": "coverage",
+    "require": [
+      "./test/tshook.js"
+    ],
+    "sourceMap": true
+  }
+}
