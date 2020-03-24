@@ -37,7 +37,11 @@ export const fixHexColor = (color: number): number => {
     return Math.floor(fixed);
 };
 
-export const fixAlpha = (alpha: number): number => {
+export const fixAlpha = (alpha?: number): number => {
+
+    if (typeof alpha !== 'number') {
+        return 0;
+    }
 
     const fixed: number = Math.max(MIN_ALPHA, Math.min(MAX_ALPHA, alpha));
     const fixedString = fixed.toFixed(2);

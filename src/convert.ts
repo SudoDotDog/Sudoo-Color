@@ -4,9 +4,9 @@
  * @description Convert
  */
 
-import { ColorConfig } from "./config";
+import { ColorConfig, fixAlpha } from "./config";
 
-export const createRGB = (config: ColorConfig, space: boolean): string => {
+export const convertConfigToRGB = (config: ColorConfig, space: boolean): string => {
 
     if (space) {
         return `rgb(${config.red}, ${config.green}, ${config.blue})`;
@@ -14,10 +14,11 @@ export const createRGB = (config: ColorConfig, space: boolean): string => {
     return `rgb(${config.red},${config.green},${config.blue})`;
 };
 
-export const createRGBA = (config: ColorConfig, space: boolean): string => {
+export const convertConfigToRGBA = (config: ColorConfig, space: boolean): string => {
 
+    const alpha: number = fixAlpha(config.alpha);
     if (space) {
-        return `rgba(${config.red}, ${config.green}, ${config.blue}, ${config.alpha})`;
+        return `rgba(${config.red}, ${config.green}, ${config.blue}, ${alpha})`;
     }
-    return `rgba(${config.red},${config.green},${config.blue},${config.alpha})`;
+    return `rgba(${config.red},${config.green},${config.blue},${alpha})`;
 };

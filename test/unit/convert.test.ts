@@ -6,55 +6,34 @@
  */
 
 import { expect } from 'chai';
-import { convertHexToRGB, convertHexToRGBA } from '../../src/convert';
+import { ColorConfig, convertConfigToRGB, convertConfigToRGBA } from '../../src';
 
 describe('Given [Convert] helper functions', (): void => {
 
-    it('should be able to convert other to rgb', (): void => {
+    it('should be able to convert config to rgb', (): void => {
 
-        const hex: string = 'ccc';
-        const rgb: string = convertHexToRGB(hex);
+        const config: ColorConfig = {
 
-        expect(rgb).to.be.equal('');
-    });
-
-    it('should be able to convert hex to rgb', (): void => {
-
-        const hex: string = '#1256ab';
-        const rgb: string = convertHexToRGB(hex);
+            red: 18,
+            green: 86,
+            blue: 171,
+        };
+        const rgb: string = convertConfigToRGB(config, false);
 
         expect(rgb).to.be.equal('rgb(18,86,171)');
     });
 
-    it('should be able to convert hex to rgb with space', (): void => {
+    it('should be able to convert config to rgba', (): void => {
 
-        const hex: string = '#1256ab';
-        const rgb: string = convertHexToRGB(hex, true);
+        const config: ColorConfig = {
 
-        expect(rgb).to.be.equal('rgb(18, 86, 171)');
-    });
+            red: 18,
+            green: 86,
+            blue: 171,
+            alpha: 0.5,
+        };
+        const rgb: string = convertConfigToRGBA(config, false);
 
-    it('should be able to convert other to rgba', (): void => {
-
-        const hex: string = 'ccc';
-        const rgba: string = convertHexToRGBA(hex, '.5');
-
-        expect(rgba).to.be.equal('');
-    });
-
-    it('should be able to convert hex to rgba', (): void => {
-
-        const hex: string = '#1256ab';
-        const rgba: string = convertHexToRGBA(hex, '.5');
-
-        expect(rgba).to.be.equal('rgba(18,86,171,.5)');
-    });
-
-    it('should be able to convert hex to rgba with space', (): void => {
-
-        const hex: string = '#1256ab';
-        const rgba: string = convertHexToRGBA(hex, '.5', true);
-
-        expect(rgba).to.be.equal('rgba(18, 86, 171, .5)');
+        expect(rgb).to.be.equal('rgba(18,86,171,0.5)');
     });
 });
