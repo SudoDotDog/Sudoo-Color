@@ -15,7 +15,7 @@ describe('Given {Color} Class', (): void => {
 
     it('should be able to construct', (): void => {
 
-        const instance: Color = Color.create();
+        const instance: Color = Color.black();
         expect(instance).to.be.instanceOf(Color);
     });
 });
