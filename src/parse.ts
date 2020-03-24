@@ -6,6 +6,14 @@
 
 import { ColorConfig, createBlackColorConfig, parseHexColor } from "./config";
 
+export const removeHexSharp = (hex: string): string => {
+
+    if (hex.length === 7 && hex[0] === '#') {
+        return hex.substring(1);
+    }
+    return hex;
+};
+
 export const parseHex = (hex: string): ColorConfig => {
     // tslint:disable: no-magic-numbers
 
