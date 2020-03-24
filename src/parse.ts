@@ -16,7 +16,7 @@ export const removeHexSharp = (hex: string): string => {
 
 export const validateHex = (hex: string): boolean => {
 
-    return (/[0-9A-Fa-f]{6}/).test(hex);
+    return (/^[0-9A-Fa-f]{6}$/).test(hex);
 };
 
 export const parseHex = (hex: string): ColorConfig => {

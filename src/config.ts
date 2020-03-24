@@ -33,7 +33,7 @@ export const createWhiteColorConfig = (): ColorConfig => ({
 
 export const parseHexColor = (hex: string): number => {
 
-    if (!(/[0-9A-Fa-f]{2}/).test(hex)) {
+    if (!(/^[0-9A-Fa-f]{2}$/).test(hex)) {
         return MAX_HEX_COLOR;
     }
 
