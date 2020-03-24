@@ -31,6 +31,23 @@ export const createWhiteColorConfig = (): ColorConfig => ({
     blue: 255,
 });
 
+export const parseHexColor = (hex: string): number => {
+
+    if (!(/[0-9A-Fa-f]{2}/).test(hex)) {
+        return MAX_HEX_COLOR;
+    }
+
+    const parsed: number = parseInt(hex.substring(0, 2), 16);
+    return fixHexColor(parsed);
+};
+
+export const convertHexColor = (color: number): string => {
+
+    const fixed: number = fixHexColor(color);
+    const parsed: string = fixed.toString(16);
+    return parsed;
+};
+
 export const fixHexColor = (color: number): number => {
 
     const fixed: number = Math.max(MIN_HEX_COLOR, Math.min(MAX_HEX_COLOR, color));

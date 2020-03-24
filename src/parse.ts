@@ -4,7 +4,7 @@
  * @description Parse
  */
 
-import { ColorConfig, createBlackColorConfig } from "./config";
+import { ColorConfig, createBlackColorConfig, parseHexColor } from "./config";
 
 export const parseHex = (hex: string): ColorConfig => {
     // tslint:disable: no-magic-numbers
@@ -14,9 +14,9 @@ export const parseHex = (hex: string): ColorConfig => {
     }
 
     if (hex.length === 6) {
-        const red: number = parseInt(hex.substring(0, 2), 16);
-        const green: number = parseInt(hex.substring(2, 4), 16);
-        const blue: number = parseInt(hex.substring(4, 6), 16);
+        const red: number = parseHexColor(hex.substring(0, 2));
+        const green: number = parseHexColor(hex.substring(2, 4));
+        const blue: number = parseHexColor(hex.substring(4, 6));
 
         return {
             red,

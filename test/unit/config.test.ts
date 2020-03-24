@@ -7,11 +7,50 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { fixAlpha, fixHexColor } from "../../src";
+import { convertHexColor, fixAlpha, fixHexColor, parseHexColor } from "../../src";
 
 describe('Given [Config] Helper Methods', (): void => {
 
     const chance: Chance.Chance = new Chance('color-config');
+
+    describe('Given [HexParsing] Function', (): void => {
+
+        it('should be able to parse hex to number', (): void => {
+
+            const source: string = 'AB';
+            const result: number = parseHexColor(source);
+
+            // tslint:disable-next-line: no-magic-numbers
+            expect(result).to.be.equal(171);
+        });
+
+        it('should be able to parse overflow hex to number', (): void => {
+
+            const source: string = 'AZ';
+            const result: number = parseHexColor(source);
+
+            // tslint:disable-next-line: no-magic-numbers
+            expect(result).to.be.equal(255);
+        });
+
+        it('should be able to convert number to hex', (): void => {
+
+            const source: number = 255;
+            const result: string = convertHexColor(source);
+
+            // tslint:disable-next-line: no-magic-numbers
+            expect(result).to.be.equal('ff');
+        });
+
+        it('should be able to convert overflow number to hex', (): void => {
+
+            const source: number = 300;
+            const result: string = convertHexColor(source);
+
+            // tslint:disable-next-line: no-magic-numbers
+            expect(result).to.be.equal('ff');
+        });
+    });
 
     describe('Given [fixHexColor] Function', (): void => {
 
