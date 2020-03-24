@@ -48,6 +48,24 @@ export const convertHexColor = (color: number): string => {
     return parsed;
 };
 
+export const fixColorInput = (color: number | string): number => {
+
+    const colorNumber: number = Number(color);
+    if (isNaN(colorNumber)) {
+        return 0;
+    }
+    return fixHexColor(colorNumber);
+};
+
+export const fixAlphaInput = (alpha: number | string): number => {
+
+    const colorNumber: number = Number(alpha);
+    if (isNaN(colorNumber)) {
+        return 0;
+    }
+    return fixAlpha(colorNumber);
+};
+
 export const fixHexColor = (color: number): number => {
 
     const fixed: number = Math.max(MIN_HEX_COLOR, Math.min(MAX_HEX_COLOR, color));
@@ -81,4 +99,23 @@ export const fixColorConfig = (config: ColorConfig): ColorConfig => {
         };
     }
     return result;
+};
+
+export const createColorConfigFromRGB = (red: string | number, green: string | number, blue: string | number): ColorConfig => {
+
+    return {
+        red: fixColorInput(red),
+        green: fixColorInput(green),
+        blue: fixColorInput(blue),
+    };
+};
+
+export const createColorConfigFromRGBA = (red: string | number, green: string | number, blue: string | number, alpha: string | number): ColorConfig => {
+
+    return {
+        red: fixColorInput(red),
+        green: fixColorInput(green),
+        blue: fixColorInput(blue),
+        alpha: fixAlphaInput(alpha),
+    };
 };
