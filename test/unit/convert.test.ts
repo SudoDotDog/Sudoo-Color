@@ -6,7 +6,7 @@
  */
 
 import { expect } from 'chai';
-import { ColorConfig, convertConfigToRGB, convertConfigToRGBA } from '../../src';
+import { ColorConfig, convertConfigToHEX, convertConfigToRGB, convertConfigToRGBA } from '../../src';
 
 describe('Given [Convert] helper functions', (): void => {
 
@@ -75,5 +75,31 @@ describe('Given [Convert] helper functions', (): void => {
         const rgb: string = convertConfigToRGBA(config, true);
 
         expect(rgb).to.be.equal('rgba(18, 86, 171, 0.5)');
+    });
+
+    it('should be able to convert config to hex', (): void => {
+
+        const config: ColorConfig = {
+
+            red: 18,
+            green: 86,
+            blue: 171,
+        };
+        const rgb: string = convertConfigToHEX(config, false);
+
+        expect(rgb).to.be.equal('1256ab');
+    });
+
+    it('should be able to convert config to hex with hex', (): void => {
+
+        const config: ColorConfig = {
+
+            red: 18,
+            green: 86,
+            blue: 171,
+        };
+        const rgb: string = convertConfigToHEX(config, true);
+
+        expect(rgb).to.be.equal('#1256ab');
     });
 });

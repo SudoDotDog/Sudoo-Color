@@ -4,7 +4,7 @@
  * @description Convert
  */
 
-import { ColorConfig, fixAlpha } from "./config";
+import { ColorConfig, convertHexColor, fixAlpha } from "./config";
 
 export const convertConfigToRGB = (config: ColorConfig, space: boolean): string => {
 
@@ -21,4 +21,16 @@ export const convertConfigToRGBA = (config: ColorConfig, space: boolean): string
         return `rgba(${config.red}, ${config.green}, ${config.blue}, ${alpha})`;
     }
     return `rgba(${config.red},${config.green},${config.blue},${alpha})`;
+};
+
+export const convertConfigToHEX = (config: ColorConfig, sharp: boolean): string => {
+
+    const red: string = convertHexColor(config.red);
+    const green: string = convertHexColor(config.green);
+    const blue: string = convertHexColor(config.blue);
+
+    if (sharp) {
+        return `#${red}${green}${blue}`;
+    }
+    return `${red}${green}${blue}`;
 };
