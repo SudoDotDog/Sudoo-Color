@@ -22,7 +22,26 @@ export class Color {
         return new Color(config);
     }
 
+    private _red: number;
+    private _green: number;
+    private _blue: number;
+    private _alpha?: number;
+
     private constructor(config: ColorConfig) {
 
+        this._red = config.red;
+        this._green = config.green;
+        this._blue = config.blue;
+        this._alpha = config.alpha;
+    }
+
+    public toConfig(): ColorConfig {
+
+        return {
+            red: this._red,
+            green: this._green,
+            blue: this._blue,
+            alpha: this._alpha,
+        };
     }
 }
