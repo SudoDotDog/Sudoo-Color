@@ -4,7 +4,7 @@
  * @description index
  */
 
-import { ColorConfig } from "./declare";
+import { ColorConfig } from "./config";
 
 export class Color {
 
