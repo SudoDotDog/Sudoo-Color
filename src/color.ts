@@ -92,6 +92,21 @@ export class Color {
         return this;
     }
 
+    public clone(): Color {
+
+        return new Color(this.toConfig());
+    }
+
+    public equals(target: Color): boolean {
+
+        return this.hash() === target.hash();
+    }
+
+    public hash(): string {
+
+        return JSON.stringify(this.toConfig());
+    }
+
     public toRGB(space: boolean = false): string {
 
         return convertConfigToRGB(this.toConfig(), space);
