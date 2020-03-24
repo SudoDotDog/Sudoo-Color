@@ -4,7 +4,7 @@
  * @description index
  */
 
-import { ColorConfig, createColorConfigFromRGB, createColorConfigFromRGBA, fixAlpha, fixColorConfig, fixHexColor } from "./config";
+import { ColorConfig, createBlackColorConfig, createColorConfigFromRGB, createColorConfigFromRGBA, createWhiteColorConfig, fixAlpha, fixColorConfig, fixHexColor } from "./config";
 import { convertConfigToHEX, convertConfigToRGB, convertConfigToRGBA } from "./convert";
 import { parseHex } from "./parse";
 
@@ -12,11 +12,12 @@ export class Color {
 
     public static black(): Color {
 
-        return new Color({
-            red: 0,
-            green: 0,
-            blue: 0,
-        });
+        return this.create(createBlackColorConfig());
+    }
+
+    public static white(): Color {
+
+        return this.create(createWhiteColorConfig());
     }
 
     public static fromRGB(red: string | number, green: string | number, blue: string | number): Color {
