@@ -66,7 +66,7 @@ export class Color {
         return this._blue;
     }
     public get alpha(): number {
-        if (this.hasAlpha()) {
+        if (typeof this._alpha === 'number') {
             return this._alpha;
         }
         return 0;
@@ -112,6 +112,14 @@ export class Color {
         return JSON.stringify(this.toConfig());
     }
 
+    public toRGBOrRGBA(space: boolean = false): string {
+
+        if (typeof this._alpha === 'number') {
+            return this.toRGBA(space);
+        }
+        return this.toRGB(space);
+    }
+
     public toRGB(space: boolean = false): string {
 
         return convertConfigToRGB(this.toConfig(), space);
@@ -130,7 +138,7 @@ export class Color {
     public toString(): string {
 
         const list: number[] = [this._red, this._green, this._blue];
-        if (this.hasAlpha()) {
+        if (typeof this._alpha === 'number') {
             list.push(this._alpha);
         }
         return list.join(',');
