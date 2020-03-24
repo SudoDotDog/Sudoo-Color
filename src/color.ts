@@ -66,7 +66,7 @@ export class Color {
         return this._blue;
     }
     public get alpha(): number {
-        if (typeof this._alpha === 'number') {
+        if (this.hasAlpha()) {
             return this._alpha;
         }
         return 0;
@@ -90,6 +90,11 @@ export class Color {
     public setAlpha(alpha: number): this {
         this._alpha = fixAlpha(alpha);
         return this;
+    }
+
+    public hasAlpha(): boolean {
+
+        return typeof this._alpha === 'number';
     }
 
     public clone(): Color {
@@ -120,6 +125,15 @@ export class Color {
     public toHEX(sharp: boolean = false): string {
 
         return convertConfigToHEX(this.toConfig(), sharp);
+    }
+
+    public toString(): string {
+
+        const list: number[] = [this._red, this._green, this._blue];
+        if (this.hasAlpha()) {
+            list.push(this._alpha);
+        }
+        return list.join(',');
     }
 
     public toConfig(): ColorConfig {
