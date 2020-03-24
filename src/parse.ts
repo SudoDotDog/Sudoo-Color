@@ -14,25 +14,28 @@ export const removeHexSharp = (hex: string): string => {
     return hex;
 };
 
+export const validateHex = (hex: string): boolean => {
+
+    return (/[0-9A-Fa-f]{6}/).test(hex);
+};
+
 export const parseHex = (hex: string): ColorConfig => {
+
+    const sharpRemoved: string = removeHexSharp(hex);
+
+    if (!validateHex(sharpRemoved)) {
+        return createBlackColorConfig();
+    }
+
     // tslint:disable: no-magic-numbers
-
-    if (hex.length === 7 && hex[0] === '#') {
-        return parseHex(hex.substring(1));
-    }
-
-    if (hex.length === 6) {
-        const red: number = parseHexColor(hex.substring(0, 2));
-        const green: number = parseHexColor(hex.substring(2, 4));
-        const blue: number = parseHexColor(hex.substring(4, 6));
-
-        return {
-            red,
-            green,
-            blue,
-        };
-    }
-
-    return createBlackColorConfig();
+    const red: number = parseHexColor(sharpRemoved.substring(0, 2));
+    const green: number = parseHexColor(sharpRemoved.substring(2, 4));
+    const blue: number = parseHexColor(sharpRemoved.substring(4, 6));
     // tslint:enable: no-magic-numbers
+
+    return {
+        red,
+        green,
+        blue,
+    };
 };
