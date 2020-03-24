@@ -33,7 +33,8 @@ export const createWhiteColorConfig = (): ColorConfig => ({
 
 export const fixHexColor = (color: number): number => {
 
-    return Math.floor(Math.max(MIN_HEX_COLOR, Math.min(MAX_HEX_COLOR, color)));
+    const fixed: number = Math.max(MIN_HEX_COLOR, Math.min(MAX_HEX_COLOR, color));
+    return Math.floor(fixed);
 };
 
 export const fixAlpha = (alpha: number): number => {
