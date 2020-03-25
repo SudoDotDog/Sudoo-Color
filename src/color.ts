@@ -76,17 +76,14 @@ export class Color {
         this._red = fixHexColor(red);
         return this;
     }
-
     public setGreen(green: number): this {
         this._green = fixHexColor(green);
         return this;
     }
-
     public setBlue(blue: number): this {
         this._blue = fixHexColor(blue);
         return this;
     }
-
     public setAlpha(alpha: number): this {
         this._alpha = fixAlpha(alpha);
         return this;
