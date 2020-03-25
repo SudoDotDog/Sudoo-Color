@@ -89,6 +89,19 @@ export class Color {
         return this;
     }
 
+    public dyeRed(red: number): this {
+        const newRed: number = this._red + red;
+        return this.setRed(newRed);
+    }
+    public dyeGreen(green: number): this {
+        const newGreen: number = this._green + green;
+        return this.setGreen(newGreen);
+    }
+    public dyeBlue(blue: number): this {
+        const newBlue: number = this._blue + blue;
+        return this.setBlue(newBlue);
+    }
+
     public hasAlpha(): boolean {
 
         return typeof this._alpha === 'number';
