@@ -102,6 +102,16 @@ export class Color {
         return this.setBlue(newBlue);
     }
 
+    public dilution(value: number): this {
+
+        return this;
+    }
+
+    public condense(value: number): this {
+
+        return this;
+    }
+
     public hasAlpha(): boolean {
 
         return typeof this._alpha === 'number';
