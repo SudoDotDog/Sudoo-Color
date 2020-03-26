@@ -7,7 +7,7 @@
 
 import { expect } from "chai";
 import * as Chance from "chance";
-import { ColorConfig, overallMutate } from "../../src";
+import { ColorConfig, overallMutate, highlightMutate } from "../../src";
 
 describe('Given [Mutation] helper functions', (): void => {
 
@@ -59,6 +59,26 @@ describe('Given [Mutation] helper functions', (): void => {
 
             const result: ColorConfig = overallMutate(config, 2);
             expect(result).to.be.deep.equal(config);
+        });
+    });
+
+    describe('Given [HighlightMutate] function', (): void => {
+
+        it('should be able to highlight mutate', (): void => {
+
+            const config: ColorConfig = {
+                red: 100,
+                green: 100,
+                blue: 100,
+            };
+
+            // tslint:disable-next-line: no-magic-numbers
+            const result: ColorConfig = highlightMutate(config, 'red', 0.5, 0.1);
+            expect(result).to.be.deep.equal({
+                red: 150,
+                green: 95,
+                blue: 95,
+            });
         });
     });
 });

@@ -10,13 +10,17 @@ const MAX_HEX_COLOR: number = 255;
 const MIN_ALPHA: number = 0;
 const MAX_ALPHA: number = 1;
 
-export type ColorConfig = {
+export type PureColorConfig = {
 
     readonly red: number;
     readonly green: number;
     readonly blue: number;
-    readonly alpha?: number;
 };
+
+export type ColorConfig = {
+
+    readonly alpha?: number;
+} & PureColorConfig;
 
 export const createBlackColorConfig = (): ColorConfig => ({
     red: 0,
