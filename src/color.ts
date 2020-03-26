@@ -6,6 +6,7 @@
 
 import { ColorConfig, createBlackColorConfig, createColorConfigFromRGB, createColorConfigFromRGBA, createWhiteColorConfig, fixAlpha, fixColorConfig, fixHexColor } from "./config";
 import { convertConfigToHEX, convertConfigToRGB, convertConfigToRGBA } from "./convert";
+import { highlightMutate, overallMutate } from "./mutation";
 import { parseHex } from "./parse";
 
 export class Color {
@@ -35,12 +36,13 @@ export class Color {
     public static fromHEX(hex: string): Color {
 
         const config: ColorConfig = parseHex(hex);
-        return this.create(fixColorConfig(config));
+        return this.create(config);
     }
 
     public static create(config: ColorConfig) {
 
-        return new Color(config);
+        const fixed: ColorConfig = fixColorConfig(config);
+        return new Color(fixed);
     }
 
     private _red: number;
@@ -102,21 +104,26 @@ export class Color {
         return this.setBlue(newBlue);
     }
 
-    public highlightRed(red: number): this {
-        return this;
+    public highlightRed(red: number, reverse: number = 0.2): this {
+        const parsed: ColorConfig = highlightMutate(this.toConfig(), 'red', red, reverse);
+        return this.update(parsed);
     }
-    public highlightGreen(green: number): this {
-        return this;
+    public highlightGreen(green: number, reverse: number = 0.2): this {
+        const parsed: ColorConfig = highlightMutate(this.toConfig(), 'green', green, reverse);
+        return this.update(parsed);
     }
-    public highlightBlue(blue: number): this {
-        return this;
+    public highlightBlue(blue: number, reverse: number = 0.2): this {
+        const parsed: ColorConfig = highlightMutate(this.toConfig(), 'blue', blue, reverse);
+        return this.update(parsed);
     }
 
     public dilution(value: number): this {
-        return this;
+        const parsed: ColorConfig = overallMutate(this.toConfig(), -value);
+        return this.update(parsed);
     }
     public condense(value: number): this {
-        return this;
+        const parsed: ColorConfig = overallMutate(this.toConfig(), value);
+        return this.update(parsed);
     }
 
     public hasAlpha(): boolean {
@@ -124,19 +131,14 @@ export class Color {
         return typeof this._alpha === 'number';
     }
 
-    public clone(): Color {
+    public update(config: ColorConfig): this {
 
-        return new Color(this.toConfig());
-    }
-
-    public equals(target: Color): boolean {
-
-        return this.hash() === target.hash();
-    }
-
-    public hash(): string {
-
-        return JSON.stringify(this.toConfig());
+        const fixed: ColorConfig = fixColorConfig(config);
+        this._red = fixed.red;
+        this._green = fixed.green;
+        this._blue = fixed.blue;
+        this._alpha = fixed.alpha;
+        return this;
     }
 
     public toRGBOrRGBA(space: boolean = false): string {
@@ -179,5 +181,15 @@ export class Color {
             blue: this._blue,
             alpha: this._alpha,
         };
+    }
+
+    public clone(): Color {
+        return new Color(this.toConfig());
+    }
+    public equals(target: Color): boolean {
+        return this.hash() === target.hash();
+    }
+    public hash(): string {
+        return JSON.stringify(this.toConfig());
     }
 }
