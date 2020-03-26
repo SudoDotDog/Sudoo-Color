@@ -47,13 +47,13 @@ export const highlightMutate = (
     }
 
     const multiplier: number = 1 + value;
-    const reverseMultiplier: number = (1 + (reverse * value)) * -1;
+    const reverseAdder: number = reverse * value;
 
     return {
         ...config,
-        red: fixHexColor(config.red * reverseMultiplier),
-        green: fixHexColor(config.green * reverseMultiplier),
-        blue: fixHexColor(config.blue * reverseMultiplier),
+        red: fixHexColor(config.red - (config.red * reverseAdder)),
+        green: fixHexColor(config.green - (config.green * reverseAdder)),
+        blue: fixHexColor(config.blue - (config.blue * reverseAdder)),
         [key]: fixHexColor(config[key] * multiplier),
     };
 };
