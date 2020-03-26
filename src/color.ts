@@ -102,11 +102,20 @@ export class Color {
         return this.setBlue(newBlue);
     }
 
+    public highlightRed(red: number): this {
+        return this;
+    }
+    public highlightGreen(green: number): this {
+        return this;
+    }
+    public highlightBlue(blue: number): this {
+        return this;
+    }
+
     public dilution(value: number): this {
 
         return this;
     }
-
     public condense(value: number): this {
 
         return this;
