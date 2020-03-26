@@ -7,5 +7,6 @@
 export * from "./color";
 export * from "./config";
 export * from "./convert";
+export * from "./mutation";
 export * from "./parse";
 
