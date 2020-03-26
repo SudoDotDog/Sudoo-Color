@@ -113,11 +113,9 @@ export class Color {
     }
 
     public dilution(value: number): this {
-
         return this;
     }
     public condense(value: number): this {
-
         return this;
     }
 
