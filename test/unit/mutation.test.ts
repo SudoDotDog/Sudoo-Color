@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 /**
  * @author WMXPY
  * @namespace Color
@@ -11,6 +12,7 @@ import { ColorConfig, highlightMutate, overallMutate } from "../../src";
 
 describe('Given [Mutation] helper functions', (): void => {
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const chance: Chance.Chance = new Chance('color-mutation');
 
     describe('Given [OverallMutate] function', (): void => {
@@ -23,7 +25,6 @@ describe('Given [Mutation] helper functions', (): void => {
                 blue: 100,
             };
 
-            // tslint:disable-next-line: no-magic-numbers
             const result: ColorConfig = overallMutate(config, 0.5);
             expect(result).to.be.deep.equal({
                 red: 150,
@@ -40,7 +41,6 @@ describe('Given [Mutation] helper functions', (): void => {
                 blue: 100,
             };
 
-            // tslint:disable-next-line: no-magic-numbers
             const result: ColorConfig = overallMutate(config, -0.5);
             expect(result).to.be.deep.equal({
                 red: 50,
@@ -72,7 +72,6 @@ describe('Given [Mutation] helper functions', (): void => {
                 blue: 100,
             };
 
-            // tslint:disable-next-line: no-magic-numbers
             const result: ColorConfig = highlightMutate(config, 'red', 0.5, 0.1);
             expect(result).to.be.deep.equal({
                 red: 150,
@@ -89,7 +88,6 @@ describe('Given [Mutation] helper functions', (): void => {
                 blue: 100,
             };
 
-            // tslint:disable-next-line: no-magic-numbers
             const result: ColorConfig = highlightMutate(config, 'red', 0.5, -0.1);
             expect(result).to.be.deep.equal(config);
         });

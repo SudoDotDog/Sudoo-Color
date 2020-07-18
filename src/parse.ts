@@ -27,11 +27,9 @@ export const parseHex = (hex: string): ColorConfig => {
         return createBlackColorConfig();
     }
 
-    // tslint:disable: no-magic-numbers
     const red: number = parseHexColor(sharpRemoved.substring(0, 2));
     const green: number = parseHexColor(sharpRemoved.substring(2, 4));
     const blue: number = parseHexColor(sharpRemoved.substring(4, 6));
-    // tslint:enable: no-magic-numbers
 
     return {
         red,

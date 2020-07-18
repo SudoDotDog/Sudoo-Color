@@ -16,7 +16,7 @@ describe('Given [Parse] helper functions', (): void => {
         const hex: string = '1256ab';
         const result: boolean = validateHex(hex);
 
-        // tslint:disable-next-line: no-unused-expression
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(result).to.be.true;
     });
 
@@ -25,7 +25,7 @@ describe('Given [Parse] helper functions', (): void => {
         const hex: string = 'a1256ab';
         const result: boolean = validateHex(hex);
 
-        // tslint:disable-next-line: no-unused-expression
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(result).to.be.false;
     });
 
@@ -34,7 +34,7 @@ describe('Given [Parse] helper functions', (): void => {
         const hex: string = '1256zd';
         const result: boolean = validateHex(hex);
 
-        // tslint:disable-next-line: no-unused-expression
+        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         expect(result).to.be.false;
     });
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 /**
  * @author WMXPY
  * @namespace Color
@@ -20,7 +21,6 @@ describe('Given [Config] Helper Methods', (): void => {
             const source: string = 'AB';
             const result: number = parseHexColor(source);
 
-            // tslint:disable-next-line: no-magic-numbers
             expect(result).to.be.equal(171);
         });
 
@@ -29,7 +29,6 @@ describe('Given [Config] Helper Methods', (): void => {
             const source: string = 'AZ';
             const result: number = parseHexColor(source);
 
-            // tslint:disable-next-line: no-magic-numbers
             expect(result).to.be.equal(255);
         });
 
@@ -38,7 +37,6 @@ describe('Given [Config] Helper Methods', (): void => {
             const source: number = 255;
             const result: string = convertHexColor(source);
 
-            // tslint:disable-next-line: no-magic-numbers
             expect(result).to.be.equal('ff');
         });
 
@@ -47,7 +45,6 @@ describe('Given [Config] Helper Methods', (): void => {
             const source: number = 300;
             const result: string = convertHexColor(source);
 
-            // tslint:disable-next-line: no-magic-numbers
             expect(result).to.be.equal('ff');
         });
     });
@@ -65,7 +62,6 @@ describe('Given [Config] Helper Methods', (): void => {
         it('should be able to fix multiple precision number', (): void => {
 
             const source: number = chance.natural({ min: 0, max: 255 });
-            // tslint:disable-next-line: no-magic-numbers
             const result: number = fixHexColor(source + 0.5);
 
             expect(result).to.be.equal(source);
@@ -74,11 +70,9 @@ describe('Given [Config] Helper Methods', (): void => {
         it('should be able to fix overflow number', (): void => {
 
             const source: number = chance.natural({ min: 0, max: 255 });
-            // tslint:disable-next-line: no-magic-numbers
             const resultOver: number = fixHexColor(source + 255);
             const resultDown: number = fixHexColor(-source);
 
-            // tslint:disable-next-line: no-magic-numbers
             expect(resultOver).to.be.equal(255);
             expect(resultDown).to.be.equal(0);
         });

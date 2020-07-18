@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-magic-numbers */
 /**
  * @author WMXPY
  * @namespace Color
@@ -39,7 +40,7 @@ export class Color {
         return this.create(config);
     }
 
-    public static create(config: ColorConfig) {
+    public static create(config: ColorConfig): Color {
 
         const fixed: ColorConfig = fixColorConfig(config);
         return new Color(fixed);
@@ -104,15 +105,27 @@ export class Color {
         return this.setBlue(newBlue);
     }
 
-    public highlightRed(red: number, reverse: number = 0.2): this {
+    public highlightRed(
+        red: number,
+        reverse: number = 0.2,
+    ): this {
+
         const parsed: ColorConfig = highlightMutate(this.toConfig(), 'red', red, reverse);
         return this.update(parsed);
     }
-    public highlightGreen(green: number, reverse: number = 0.2): this {
+    public highlightGreen(
+        green: number,
+        reverse: number = 0.2,
+    ): this {
+
         const parsed: ColorConfig = highlightMutate(this.toConfig(), 'green', green, reverse);
         return this.update(parsed);
     }
-    public highlightBlue(blue: number, reverse: number = 0.2): this {
+    public highlightBlue(
+        blue: number,
+        reverse: number = 0.2,
+    ): this {
+
         const parsed: ColorConfig = highlightMutate(this.toConfig(), 'blue', blue, reverse);
         return this.update(parsed);
     }
