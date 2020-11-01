@@ -6,3 +6,11 @@
 [![downloads](https://img.shields.io/npm/dm/@sudoo/color.svg)](https://www.npmjs.com/package/@sudoo/color)
 
 :deciduous_tree: Color Controller
+
+## Install
+
+```sh
+yarn add @sudoo/color
+# Or
+npm install @sudoo/color --save
+```
