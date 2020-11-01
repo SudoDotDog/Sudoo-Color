@@ -14,3 +14,13 @@ yarn add @sudoo/color
 # Or
 npm install @sudoo/color --save
 ```
+
+## Usage
+
+```ts
+import { Color } from "@sudoo/color";
+
+const blackColor: Color = Color.black();
+const hexColor: Color = Color.fromHEX('#AAAAAA'); // Pound is optional
+const rgbaColor: Color = Color.fromRGBA(50,50,50,15);
+```
