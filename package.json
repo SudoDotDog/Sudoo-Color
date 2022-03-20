@@ -1,7 +1,7 @@
 {
   "name": "@sudoo/color",
   "version": "1.3.0",
-  "description": ":deciduous_tree: Color Controller",
+  "description": "Color Controller",
   "directories": {
     "doc": "docs"
   },
@@ -18,10 +18,8 @@
     "url": "https://github.com/SudoDotDog/Sudoo-Color/issues"
   },
   "homepage": "https://github.com/SudoDotDog/Sudoo-Color#readme",
-  "dependencies": {},
   "devDependencies": {
-    "@sudoo/io": "^1.8.0",
-    "@sudoo/triforce": "^2.9.6"
+    "@sudoo/triforce": "^3.2.0"
   },
   "nyc": {
     "extension": [
